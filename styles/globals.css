@@ -1,0 +1,32 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url('../assets/fonts/Inter-Regular.ttf');
+}
+
+@font-face {
+  font-family: "Graphik Bold";
+  src: url('../assets/fonts/PolySans-Median.ef58da6c.ttf');
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2 {
+  font-family: "Graphik Bold";
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter";
+}
