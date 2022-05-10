@@ -31,14 +31,14 @@ export default function Navbar() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
-        color={useColorModeValue("gray.600", "white")}
+        bg={useColorModeValue("gray.800", "gray.800")}
+        color={useColorModeValue("white", "white")}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
-        borderBottom={1}
-        borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
+        // borderBottom={1}
+        // borderStyle={"solid"}
+        // borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
       >
         <Flex
@@ -56,7 +56,7 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <SiEclipseche size={30} color="#4299e1" />
+          <SiEclipseche size={30} color="white" />
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
@@ -75,6 +75,7 @@ export default function Navbar() {
             fontWeight={400}
             variant={"link"}
             href={"/account/login"}
+            color="white"
           >
             Sign In
           </Button>
@@ -82,9 +83,9 @@ export default function Navbar() {
             display={{ base: "none", md: "inline-flex" }}
             fontSize={"sm"}
             fontWeight={600}
-            color={"white"}
+            color={"blue.800"}
             as="a"
-            bg={"blue.400"}
+            bg="linear-gradient(90deg,#40efeb,#7edb92)"
             href={"/account/signup"}
           >
             Sign Up
@@ -263,8 +264,8 @@ const NAV_ITEMS = [
     href: "/about",
   },
   {
-    label: "Plans",
-    href: "/plans",
+    label: "Investments",
+    href: "/investments",
   },
   {
     label: "FAQs",

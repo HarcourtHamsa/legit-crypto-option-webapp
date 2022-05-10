@@ -8,3 +8,4 @@ export const laptop = require("./images/laptop-png-6759.png");
 export const pattern = require("./images/wavyLines.png");
 export const usdt = require("./images/usdt.png");
 export const shiba = require("./images/shiba.png");
+export const payments = require("./images/payment-methods.png");

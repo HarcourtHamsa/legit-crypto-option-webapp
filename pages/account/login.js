@@ -13,7 +13,8 @@ import {
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
-
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 import Link from "next/link";
 
 import Head from "next/head";
@@ -31,6 +32,19 @@ export default function Login() {
   const [isLoading, setIsLoading] = React.useState(false);
   const authContext = React.useContext(AuthContext);
   const router = useRouter();
+
+  const particlesInit = async (main) => {
+    console.log(main);
+
+    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
 
   const notify = (msg, type) =>
     toast(msg, {
@@ -55,7 +69,7 @@ export default function Login() {
           } else {
             notify("Authentication successful!", "success");
             authContext.setUserAuthInfo(data.data.token);
-            console.log("saving credentials...", data.data.data)
+            console.log("saving credentials...", data.data.data);
             authContext.setUserDetails(data.data.data);
             router.push("/app");
           }
@@ -79,8 +93,99 @@ export default function Login() {
         minH={"100vh"}
         align={"center"}
         justify={"center"}
-        bg={useColorModeValue("#131722", "gray.800")}
+        bg="-webkit-gradient(linear,left top,left bottom,from(#2b525a),to(#072427))"
       >
+        <Particles
+          width="90vw"
+          height="80vh"
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            top: "2%",
+          }}
+          id="tsparticles"
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={{
+            background: {
+              color: {
+                value: "red",
+              },
+              position: {
+                value: "center",
+              },
+            },
+            fpsLimit: 120,
+            interactivity: {
+              events: {
+                onClick: {
+                  enable: true,
+                  mode: "push",
+                },
+                onHover: {
+                  enable: true,
+                  mode: "repulse",
+                },
+                resize: true,
+              },
+              modes: {
+                push: {
+                  quantity: 4,
+                },
+                repulse: {
+                  distance: 200,
+                  duration: 0.4,
+                },
+              },
+            },
+            fullScreen: {
+              enable: false,
+              zIndex: -1,
+            },
+            particles: {
+              color: {
+                value: "#ffffff",
+              },
+              links: {
+                color: "#ffffff",
+                distance: 150,
+                enable: true,
+                opacity: 0.5,
+                width: 1,
+              },
+              collisions: {
+                enable: true,
+              },
+              move: {
+                direction: "none",
+                enable: true,
+                outModes: {
+                  default: "bounce",
+                },
+                random: false,
+                speed: 2,
+                straight: false,
+              },
+              number: {
+                density: {
+                  enable: true,
+                  area: 800,
+                },
+                value: 80,
+              },
+              opacity: {
+                value: 0.5,
+              },
+              shape: {
+                type: "circle",
+              },
+              size: {
+                value: { min: 1, max: 5 },
+              },
+            },
+          }}
+        />
         <ToastContainer />
 
         <Stack spacing={4} mx={"auto"} w={"lg"} py={12} px={6}>
@@ -120,8 +225,8 @@ export default function Login() {
                 </FormControl>
                 <Stack spacing={10}>
                   <Button
-                    bg={"blue.400"}
-                    color={"white"}
+                    bg="linear-gradient(90deg,#40efeb,#7edb92)"
+                    color={"gray.800"}
                     fontWeight="normal"
                     type="submit"
                     mt={6}
@@ -136,7 +241,9 @@ export default function Login() {
                   </Button>
                 </Stack>
                 <br />
-                <Link color={"blue.400"} href="/account/signup">Forgot password?</Link>
+                <Link color={"blue.400"} href="/account/signup">
+                  Forgot password?
+                </Link>
                 <Text fontWeight="normal">
                   Don&apos;t have an account?{" "}
                   <Link href="/account/signup" color={"blue.400"}>

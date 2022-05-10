@@ -22,6 +22,9 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+
 import { countries } from "../../countries";
 import FloatingButton from "../../components/FloatingButton";
 import { useFormik } from "formik";
@@ -34,6 +37,19 @@ export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const router = useRouter();
+
+  const particlesInit = async (main) => {
+    console.log(main);
+
+    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
 
   const notify = (msg, type) =>
     toast(msg, {
@@ -91,8 +107,100 @@ export default function Signup() {
         minH={"100vh"}
         align={"center"}
         justify={"center"}
-        bg={useColorModeValue("#131722", "gray.800")}
+        bg="-webkit-gradient(linear,left top,left bottom,from(#2b525a),to(#072427))"
       >
+        <Particles
+          width="90vw"
+          height="80vh"
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            top: "2%",
+          }}
+          id="tsparticles"
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={{
+            background: {
+              color: {
+                value: "red",
+              },
+              position: {
+                value: "center",
+              },
+            },
+            fpsLimit: 120,
+            interactivity: {
+              events: {
+                onClick: {
+                  enable: true,
+                  mode: "push",
+                },
+                onHover: {
+                  enable: true,
+                  mode: "repulse",
+                },
+                resize: true,
+              },
+              modes: {
+                push: {
+                  quantity: 4,
+                },
+                repulse: {
+                  distance: 200,
+                  duration: 0.4,
+                },
+              },
+            },
+            fullScreen: {
+              enable: false,
+              zIndex: -1,
+            },
+            particles: {
+              color: {
+                value: "#ffffff",
+              },
+              links: {
+                color: "#ffffff",
+                distance: 150,
+                enable: true,
+                opacity: 0.5,
+                width: 1,
+              },
+              collisions: {
+                enable: true,
+              },
+              move: {
+                direction: "none",
+                enable: true,
+                outModes: {
+                  default: "bounce",
+                },
+                random: false,
+                speed: 2,
+                straight: false,
+              },
+              number: {
+                density: {
+                  enable: true,
+                  area: 800,
+                },
+                value: 80,
+              },
+              opacity: {
+                value: 0.5,
+              },
+              shape: {
+                type: "circle",
+              },
+              size: {
+                value: { min: 1, max: 5 },
+              },
+            },
+          }}
+        />
+
         <ToastContainer />
 
         <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={8}>
@@ -201,9 +309,9 @@ export default function Signup() {
                     type="submit"
                     isLoading={isLoading}
                     size="lg"
-                    bg={"blue.400"}
                     fontWeight="normal"
-                    color={"white"}
+                    bg="linear-gradient(90deg,#40efeb,#7edb92)"
+                    color={"gray.800"}
                     _hover={{
                       bg: "blue.500",
                     }}

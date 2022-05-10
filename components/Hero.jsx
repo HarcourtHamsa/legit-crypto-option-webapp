@@ -14,9 +14,22 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
 export default function Hero() {
+  const particlesInit = async (main) => {
+    console.log(main);
+
+    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+
   return (
     <>
-      <Container maxW={"3xl"}>
+      {/* <Container maxW={"3xl"}>
         <Stack
           as={Box}
           textAlign={"center"}
@@ -58,6 +71,152 @@ export default function Hero() {
               }}
             >
               Get Started
+            </Button>
+          </Stack>
+        </Stack>
+      </Container> */}
+
+      <Container
+        maxW={{ base: "3xl", md: "full" }}
+        bg="gray.800"
+        overflow="hidden"
+        h={{ base: "fit-content", md: "100vh" }}
+        mb={10}
+      >
+        <Particles
+          width="90vw"
+          height="80vh"
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            top: "2%",
+          }}
+          id="tsparticles"
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={{
+            background: {
+              color: {
+                value: "red",
+              },
+              position: {
+                value: "center",
+              },
+            },
+            fpsLimit: 120,
+            interactivity: {
+              events: {
+                onClick: {
+                  enable: true,
+                  mode: "push",
+                },
+                onHover: {
+                  enable: true,
+                  mode: "repulse",
+                },
+                resize: true,
+              },
+              modes: {
+                push: {
+                  quantity: 4,
+                },
+                repulse: {
+                  distance: 200,
+                  duration: 0.4,
+                },
+              },
+            },
+            fullScreen: {
+              enable: false,
+              zIndex: -1,
+            },
+            particles: {
+              color: {
+                value: "#ffffff",
+              },
+              links: {
+                color: "#ffffff",
+                distance: 150,
+                enable: true,
+                opacity: 0.5,
+                width: 1,
+              },
+              collisions: {
+                enable: true,
+              },
+              move: {
+                direction: "none",
+                enable: true,
+                outModes: {
+                  default: "bounce",
+                },
+                random: false,
+                speed: 2,
+                straight: false,
+              },
+              number: {
+                density: {
+                  enable: true,
+                  area: 800,
+                },
+                value: 80,
+              },
+              opacity: {
+                value: 0.5,
+              },
+              shape: {
+                type: "circle",
+              },
+              size: {
+                value: { min: 1, max: 5 },
+              },
+            },
+          }}
+        />
+        <Stack
+          as={Box}
+          textAlign={"center"}
+          spacing={{ base: 8, md: 14 }}
+          py={{ base: 20, md: 36 }}
+          maxW={"3xl"}
+          margin="auto"
+          marginTop={{ base: 0, md: "0" }}
+        >
+          <Heading
+            // fontWeight={600}
+            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+            lineHeight={"110%"}
+            color="white"
+          >
+            <Text>Join The Global Leader Of Financial Investments</Text>
+          </Heading>
+          <Text color={"gray.400"}>
+            Expert Hub Trade is a group of financial and cryptocurrency experts
+            that invest in mining and cryptocurrency trading. We carefully
+            examine the volatility of bitcoin and other crypto currencies,
+            invest and make good profit from our investments.
+          </Text>
+          <Stack
+            direction={"column"}
+            spacing={3}
+            align={"center"}
+            alignSelf={"center"}
+            position={"relative"}
+          >
+            <Button
+              color={"blue.800"}
+              bg="linear-gradient(90deg,#40efeb,#7edb92)"
+              //   rounded={"full"}
+              as="a"
+              href="/account/login"
+              px={12}
+              py={8}
+              size="lg"
+              // fontWeight="medium"
+              fontSize="md"
+            >
+              Open Deposit
             </Button>
           </Stack>
         </Stack>
