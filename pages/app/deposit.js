@@ -102,7 +102,6 @@ function Deposit() {
                       p={"6"}
                       id="amount"
                       name="amount"
-                      value={formik.values.amount}
                       onChange={formik.handleChange}
                       placeholder="Enter amount here"
                       onChange={formik.handleChange}
