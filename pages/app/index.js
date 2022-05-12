@@ -19,14 +19,14 @@ function Index() {
   return (
     <div>
       <DashboardWrapper>
-        <Heading
+        {/* <Heading
           lineHeight={"110%"}
           fontSize={{ base: "2xl", sm: "4xl", md: "4xl" }}
           mb={5}
           color="white"
         >
           <Text>Welcome, {user.firstName}!</Text>
-        </Heading>
+        </Heading> */}
         <Statistics />
 
         <Container

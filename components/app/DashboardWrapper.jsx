@@ -175,7 +175,10 @@ const MobileNav = ({ onOpen, ...rest }) => {
       height="20"
       alignItems="center"
       shadow="lg"
-      bg={useColorModeValue("blue.400", "gray.900")}
+      // HERE
+      bg={useColorModeValue("#131722", "gray.900")}
+      borderBottomWidth={1}
+      borderBottomColor="gray.700"
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >

@@ -28,7 +28,7 @@ import Footer from "../components/Footer";
 import Testimonials from "../components/Testimonials";
 import {
   TickerTape,
-  SymbolOverview,
+  ForexCrossRates,
   MarketOverview,
   MarketData,
 } from "react-ts-tradingview-widgets";
@@ -411,11 +411,11 @@ export default function Home() {
       </Container>
 
       <Container maxW={{ md: "90%", base: "100%" }} overflow="hidden" mt={20}>
-        <SymbolOverview
+        <ForexCrossRates
           colorTheme="dark"
           width="100%"
           height={400}
-        ></SymbolOverview>
+        ></ForexCrossRates>
       </Container>
 
       <Container maxW="6xl" my={20}>

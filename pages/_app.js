@@ -5,9 +5,14 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { AuthProvider } from "../context/auth";
 import Loading from "../components/Loading";
 
+import * as emailjs from '@emailjs/browser'
+
+
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  emailjs.init('user_UY5jAYAIQkC14wSid54aB')
 
   useEffect(() => {
     const handleStart = (url) => setLoading(true);

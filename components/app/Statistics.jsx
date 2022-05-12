@@ -29,7 +29,7 @@ function StatsCard(props) {
       //   border={"1px solid"}
       borderColor={useColorModeValue("gray.800", "gray.500")}
       rounded={"lg"}
-      bg="#575962"
+      bg="-webkit-gradient(linear,left top,left bottom,from(#2b525a),to(#072427))"
       color="white"
     >
       <Flex justifyContent={"space-between"}>
