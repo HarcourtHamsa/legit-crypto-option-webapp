@@ -15,6 +15,17 @@ import {
   BsServer,
   BsPeopleFill,
 } from "react-icons/bs";
+
+import {
+  IoIosHome,
+  IoIosAddCircle,
+  IoIosCompass,
+  IoIosCard,
+  IoIosClock,
+  IoIosHeadset,
+  IoIosLogOut,
+  IoIosCodeDownload,
+} from "react-icons/io";
 import { FiServer } from "react-icons/fi";
 import { GoLocation } from "react-icons/go";
 import helpers from "../../helpers";
@@ -26,6 +37,7 @@ function StatsCard(props) {
       px={{ base: 2, md: 4 }}
       py={"5"}
       shadow={"xl"}
+      fontWeight="bold"
       //   border={"1px solid"}
       borderColor={useColorModeValue("gray.800", "gray.500")}
       rounded={"lg"}
@@ -34,10 +46,10 @@ function StatsCard(props) {
     >
       <Flex justifyContent={"space-between"}>
         <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight={"medium"} isTruncated>
+          <StatLabel fontWeight={"bold"} isTruncated>
             {title}
           </StatLabel>
-          <StatNumber fontSize={"2xl"} fontWeight={"medium"}>
+          <StatNumber fontSize={"2xl"} fontWeight={"bold"}>
             {stat}
           </StatNumber>
         </Box>
@@ -62,7 +74,7 @@ export default function Statistics() {
         <StatsCard
           title={"Deposited"}
           stat={`$${user.amountDeposited}`}
-          icon={<BsDownload size={"3em"} color="white" />}
+          icon={<IoIosCodeDownload size={"3em"} color="white" />}
         />
         <StatsCard
           title={"Profit"}
@@ -72,7 +84,7 @@ export default function Statistics() {
         <StatsCard
           title={"Balance"}
           stat={`$${user.balance}`}
-          icon={<BsCreditCard size={"3em"} color="white" />}
+          icon={<IoIosCard size={"3em"} color="white" />}
         />
         <StatsCard
           title={"Ref. Bonus"}

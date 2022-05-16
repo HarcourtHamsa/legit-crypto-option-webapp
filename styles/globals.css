@@ -2,18 +2,13 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-size: 14px;
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url('../assets/fonts/Inter-Regular.ttf');
+  font-family: "Uber";
+  src: url('../assets/fonts/SFPRODISPLAYMEDIUM.OTF');
 }
 
-@font-face {
-  font-family: "Graphik Bold";
-  src: url('../assets/fonts/PolySans-Median.ef58da6c.ttf');
-}
 
 
 a {
@@ -23,10 +18,30 @@ a {
 
 h1,
 h2 {
-  font-family: "Graphik Bold";
+  font-family: "Uber";
 }
 
 * {
   box-sizing: border-box;
-  font-family: "Inter";
+  font-family: "Uber";
+  font-weight: bold !important;
+}
+
+#hero {
+  background: url(../assets/images/home-hero-gradient.svg) no-repeat center;
+  background-size: cover;
+}
+
+
+
+#stats {
+  background: url(../assets/images/banner-bg.svg) no-repeat center;
+  background-size: cover;
+  background-color: rgb(18, 29, 51);
+}
+
+#about{
+  background: url(../assets/images/about-hero-bg.svg) no-repeat right;
+  background-size: contain;
+  background-color: rgb(18, 29, 51);
 }

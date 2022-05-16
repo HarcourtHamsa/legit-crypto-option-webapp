@@ -16,13 +16,15 @@ import {
   Button,
   Heading,
   Text,
+  Container
 } from "@chakra-ui/react";
+import { IoIosAdd, IoIosCompass } from "react-icons/io";
 import { FaCheckCircle } from "react-icons/fa";
 import DashboardWrapper from "../../components/app/DashboardWrapper";
 import Statistics from "../../components/app/Statistics";
 import FloatingButton from "../../components/FloatingButton";
 
-import { Ticker } from "react-ts-tradingview-widgets";
+import { TickerTape } from "react-ts-tradingview-widgets";
 import WithAuth from "../../HOCs/WithAuth";
 
 const InvestmentPlanCard = ({ title, priceRange }) => {
@@ -32,10 +34,14 @@ const InvestmentPlanCard = ({ title, priceRange }) => {
       py={"5"}
       shadow={"xl"}
       //   border={"1px solid"}
-      borderColor={useColorModeValue("gray.800", "gray.500")}
+      borderColor={useColorModeValue(
+        "-webkit-gradient(linear,left top,left bottom,from(#2b525a),to(#072427))",
+        "gray.500"
+      )}
       rounded={"lg"}
-      bg="#575962"
+      bg="-webkit-gradient(linear,left top,left bottom,from(#2b525a),to(#072427))"
       color="white"
+      fontWeight="bold"
     >
       <StatLabel fontWeight={"medium"} isTruncated>
         {title}
@@ -90,32 +96,46 @@ function invest() {
         </Head>
         {/* <Statistics /> */}
 
-        <Box maxW="7xl" mx={"auto"} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
-          {/* <Ticker colorTheme="dark"></Ticker> */}
-
-          <Heading
-            lineHeight={"110%"}
-            fontSize={{ base: "2xl", sm: "4xl", md: "4xl" }}
-            mb={5}
-            color="white"
+        <Box mx={"auto"} pt={5}>
+          <Container
+            maxW="7xl"
+            mx={"auto"}
+            pt={5}
+            px={{ base: 2, sm: 12, md: 17 }}
           >
-            <Text>Invest in a Plan</Text>
-          </Heading>
+            <Statistics />
+            <TickerTape colorTheme="dark"></TickerTape>
 
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-            <InvestmentPlanCard
-              title={"Basic Plan"}
-              priceRange={"$0.00 - $10.00"}
-            />
-            <InvestmentPlanCard
-              title={"Silver Plan"}
-              priceRange={"$0.00 - $10.00"}
-            />
-            <InvestmentPlanCard
-              title={"Gold Plan"}
-              priceRange={"$0.00 - $10.00"}
-            />
-          </SimpleGrid>
+            <Heading
+              lineHeight={"110%"}
+              fontSize={{ base: "2xl", sm: "2xl", md: "2xl" }}
+              mb={5}
+              color="white"
+              display="flex"
+              gap={2}
+            >
+              <Text>Invest in a Plan</Text>
+              <IoIosCompass size={30} />
+            </Heading>
+
+            <SimpleGrid
+              columns={{ base: 1, md: 3 }}
+              spacing={{ base: 5, lg: 8 }}
+            >
+              <InvestmentPlanCard
+                title={"Basic Plan"}
+                priceRange={"$0.00 - $10.00"}
+              />
+              <InvestmentPlanCard
+                title={"Silver Plan"}
+                priceRange={"$0.00 - $10.00"}
+              />
+              <InvestmentPlanCard
+                title={"Gold Plan"}
+                priceRange={"$0.00 - $10.00"}
+              />
+            </SimpleGrid>
+          </Container>
         </Box>
       </DashboardWrapper>
 

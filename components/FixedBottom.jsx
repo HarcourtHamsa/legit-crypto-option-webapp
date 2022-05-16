@@ -5,7 +5,7 @@ import { TickerTape } from "react-ts-tradingview-widgets";
 function FixedBottom() {
   return (
     <Box pos="fixed" bottom="-10" left="0" right="0">
-      <TickerTape colorTheme="dark"></TickerTape>
+      <TickerTape colorTheme="light"></TickerTape>
     </Box>
   );
 }

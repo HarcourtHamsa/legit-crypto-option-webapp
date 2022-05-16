@@ -90,10 +90,11 @@ export default function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex
+      id="hero"
         minH={"100vh"}
         align={"center"}
         justify={"center"}
-        bg="-webkit-gradient(linear,left top,left bottom,from(#2b525a),to(#072427))"
+        bg="rgb(18, 29, 51)"
       >
         <Particles
           width="90vw"
@@ -225,8 +226,8 @@ export default function Login() {
                 </FormControl>
                 <Stack spacing={10}>
                   <Button
-                    bg="linear-gradient(90deg,#40efeb,#7edb92)"
-                    color={"gray.800"}
+                    bg="telegram.400"
+                    color={"white"}
                     fontWeight="normal"
                     type="submit"
                     mt={6}

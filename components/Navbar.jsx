@@ -31,14 +31,14 @@ export default function Navbar() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("gray.800", "gray.800")}
+        bg={useColorModeValue("rgb(18, 29, 51)", "gray.800")}
         color={useColorModeValue("white", "white")}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
-        // borderBottom={1}
-        // borderStyle={"solid"}
-        // borderColor={useColorModeValue("gray.200", "gray.900")}
+        borderBottom={1}
+        borderStyle={"solid"}
+        borderColor={useColorModeValue("gray.700", "gray.900")}
         align={"center"}
       >
         <Flex
@@ -56,7 +56,7 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <SiEclipseche size={30} color="white" />
+          <SiEclipseche size={30} color="deepblue" />
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
@@ -73,7 +73,7 @@ export default function Navbar() {
             as={"a"}
             fontSize={"sm"}
             fontWeight={400}
-            variant={"link"}
+            variant={"outline"}
             href={"/account/login"}
             color="white"
           >
@@ -83,10 +83,10 @@ export default function Navbar() {
             display={{ base: "none", md: "inline-flex" }}
             fontSize={"sm"}
             fontWeight={600}
-            color={"blue.800"}
+            bg={"white"}
             as="a"
-            bg="linear-gradient(90deg,#40efeb,#7edb92)"
             href={"/account/signup"}
+            color="blue.800"
           >
             Sign Up
           </Button>

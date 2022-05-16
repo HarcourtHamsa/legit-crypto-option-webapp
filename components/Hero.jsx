@@ -78,10 +78,10 @@ export default function Hero() {
 
       <Container
         maxW={{ base: "3xl", md: "full" }}
-        bg="gray.800"
         overflow="hidden"
         h={{ base: "fit-content", md: "100vh" }}
         mb={10}
+        id="hero"
       >
         <Particles
           width="90vw"
@@ -133,10 +133,10 @@ export default function Hero() {
             },
             particles: {
               color: {
-                value: "#ffffff",
+                value: "#fff",
               },
               links: {
-                color: "#ffffff",
+                color: "#fff",
                 distance: 150,
                 enable: true,
                 opacity: 0.5,
@@ -176,12 +176,11 @@ export default function Hero() {
         />
         <Stack
           as={Box}
-          textAlign={"center"}
+          textAlign={"left"}
           spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}
+          py={{ base: 20, md: 20 }}
+          px={{ base: 0, md: 20 }}
           maxW={"3xl"}
-          margin="auto"
-          marginTop={{ base: 0, md: "0" }}
         >
           <Heading
             // fontWeight={600}
@@ -198,25 +197,32 @@ export default function Hero() {
             invest and make good profit from our investments.
           </Text>
           <Stack
-            direction={"column"}
+            direction={"row"}
             spacing={3}
-            align={"center"}
-            alignSelf={"center"}
+            align={"left"}
+            alignSelf={"left"}
             position={"relative"}
           >
             <Button
+              color={"white"}
+              bg="telegram.400"
+              as="a"
+              href="/account/login"
+              size="lg"
+              fontSize="md"
+            >
+              Get Started
+            </Button>
+            <Button
               color={"blue.800"}
-              bg="linear-gradient(90deg,#40efeb,#7edb92)"
+              bg="white"
               //   rounded={"full"}
               as="a"
               href="/account/login"
-              px={12}
-              py={8}
               size="lg"
-              // fontWeight="medium"
               fontSize="md"
             >
-              Open Deposit
+              Login
             </Button>
           </Stack>
         </Stack>

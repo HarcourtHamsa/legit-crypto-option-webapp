@@ -24,10 +24,14 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Container,
 } from "@chakra-ui/react";
+import { IoIosAdd } from "react-icons/io";
 import WithAuth from "../../HOCs/WithAuth";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
+import Statistics from "../../components/app/Statistics";
+import { TickerTape } from "react-ts-tradingview-widgets";
 
 function Deposit() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -60,39 +64,49 @@ function Deposit() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Heading
-          lineHeight={"110%"}
-          fontSize={{ base: "2xl", sm: "2xl", md: "2xl" }}
-          mb={5}
-          color="white"
-          fontWeight="normal"
-          textTransform="uppercase"
-          letterSpacing="2px"
-          mt={5}
+        <Statistics />
+        <Container
+          maxW="7xl"
+          mx={"auto"}
+          pt={5}
+          px={{ base: 2, sm: 12, md: 17 }}
         >
-          <Text>Your deposits</Text>
-        </Heading>
+          <TickerTape colorTheme="dark"></TickerTape>
 
-        <Button
-          color={"blue.800"}
-          bg="linear-gradient(90deg,#40efeb,#7edb92)"
-          //   rounded={"full"}
-          // px={12}
-          // py={8}
-          my={5}
-          size="md"
-          // fontWeight="medium"
-          // fontSize="md"
-          onClick={onOpen}
-        >
-          New Deposit
-        </Button>
+          <Heading
+            lineHeight={"110%"}
+            fontSize={{ base: "2xl", sm: "2xl", md: "2xl" }}
+            mb={5}
+            color="white"
+            fontWeight="bold"
+            // textTransform="uppercase"
+            // letterSpacing="2px"
+            mt={5}
+          >
+            {/* <Text>Your deposits</Text> */}
+          </Heading>
+
+          <Stack>
+            <Button
+              color={"white"}
+              margin="auto"
+              my={10}
+              size="lg"
+              fontSize="sm"
+              fontWeight="bold"
+              onClick={onOpen}
+              variant="outline"
+            >
+              Make New Deposit
+            </Button>
+          </Stack>
+        </Container>
 
         <Modal onClose={onClose} isOpen={isOpen} isCentered>
           <ModalOverlay />
           <ModalContent>
             <form onSubmit={formik.handleSubmit}>
-              <ModalHeader fontWeight="normal">Make new deposit</ModalHeader>
+              <ModalHeader fontWeight="bold">Make new deposit</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
                 <Stack spacing={4}>

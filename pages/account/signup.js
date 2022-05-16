@@ -104,10 +104,11 @@ export default function Signup() {
       </Head>
 
       <Flex
+        id="hero"
         minH={"100vh"}
         align={"center"}
         justify={"center"}
-        bg="-webkit-gradient(linear,left top,left bottom,from(#2b525a),to(#072427))"
+        bg="rgb(18, 29, 51)"
       >
         <Particles
           width="90vw"
@@ -310,8 +311,8 @@ export default function Signup() {
                     isLoading={isLoading}
                     size="lg"
                     fontWeight="normal"
-                    bg="linear-gradient(90deg,#40efeb,#7edb92)"
-                    color={"gray.800"}
+                    bg="telegram.400"
+                    color={"white"}
                     _hover={{
                       bg: "blue.500",
                     }}

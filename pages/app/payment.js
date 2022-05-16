@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Head from "next/head";
 import DashboardWrapper from "../../components/app/DashboardWrapper";
 import FloatingButton from "../../components/FloatingButton";
@@ -26,6 +26,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import * as emailjs from "@emailjs/browser";
+import { useFormik } from "formik";
+import helpers from "../../helpers";
+import axios from "axios";
 
 const CRYPRO_PAYMENT_DETAILS = [
   {
@@ -63,6 +66,7 @@ const Card = ({ title, text, icon, notify }) => {
       px={{ base: 2, md: 4 }}
       py={"5"}
       shadow={"xl"}
+      fontWeight="bold"
       // borderWidth="thin"
       //   border={"1px solid"}
       borderColor={useColorModeValue("gray.500", "gray.500")}
@@ -72,11 +76,12 @@ const Card = ({ title, text, icon, notify }) => {
       <Flex w={16} h={16} align={"center"} justify={"center"} mb={1}>
         {icon}
       </Flex>
-      <Text fontWeight={"normal"} fontSize="sm" color="white">
+      <Text fontWeight={"bold"} fontSize="sm" color="white">
         {title}
       </Text>
       <Button
-        variant="outline"
+        variant="solid"
+        colorScheme="blue"
         px={6}
         size="sm"
         w="fit-content"
@@ -96,7 +101,60 @@ const Card = ({ title, text, icon, notify }) => {
 
 function Payment() {
   const { query } = useRouter();
+  const [cloudinaryUrl, setCloudinaryUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const form = useRef();
+  const user = helpers.getUserDetailsFromLocalStorage();
+  const amount = query.amount;
+
+  const handleImageUpload = async (values) => {
+    const data = new FormData();
+    const firstName = user.firstName;
+    const file = values.file;
+
+    data.append("file", values.file);
+    data.append("upload_preset", "default");
+    data.append("cloud_name", "dgn6edv1k");
+
+    console.log("file.....", file);
+
+    await axios
+      .post("https://api.cloudinary.com/v1_1/dgn6edv1k/image/upload", data)
+      .then(async (data) => {
+        console.log(data.data.url);
+        setCloudinaryUrl(data.data.url);
+      })
+      .catch((error) => console.log("error uploading file...", error))
+      .finally(async () => {
+        const transactionDetails = {
+          url: cloudinaryUrl,
+          amount: amount,
+          method: values.method,
+          from: firstName,
+        };
+
+        console.log(transactionDetails);
+        await helpers.addTransaction(transactionDetails);
+        notify("Your payment is being reviewed.");
+      });
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      method: "Bitcoin",
+    },
+
+    onSubmit: async (values) => {
+      setIsLoading(true);
+      try {
+        await handleImageUpload(values);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+  });
 
   const notify = (msg) =>
     toast(msg, {
@@ -105,27 +163,6 @@ function Payment() {
       autoClose: 5000,
       hideProgressBar: true,
     });
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_0g8et9h",
-        "template_wmij37v",
-        form.current,
-        "user_UY5jAYAIQkC14wSid54aB"
-      )
-      .then(
-        (result) => {
-          console.log(result)
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-  };
 
   return (
     <div>
@@ -141,14 +178,12 @@ function Payment() {
           fontSize={{ base: "2xl", sm: "2xl", md: "2xl" }}
           mb={5}
           color="white"
-          fontWeight="normal"
-          textTransform="uppercase"
-          letterSpacing="2px"
+          fontWeight="Bold"
           mt={5}
         >
           <Text>Make Payment</Text>
         </Heading>
-        <Text color="white">
+        <Text color="white" maxW="3xl" fontWeight="bold">
           Please make your payment of ${query.amount} to any of the crypto
           wallet addresses below. Always verify and confirm you copied the
           wallet address correctly.
@@ -206,17 +241,34 @@ function Payment() {
             h="fit-content"
             // mt={16}
           >
-            <form ref={form} onSubmit={sendEmail}>
+            <form ref={form} onSubmit={formik.handleSubmit}>
               <Stack spacing={6}>
                 <FormControl id="email">
-                  <FormLabel fontWeight="normal" isRequired color="white">
+                  <FormLabel fontWeight="bold" isRequired color="white">
                     Upload proof of payment
                   </FormLabel>
-                  <Input type="file" p={"6"} />
+                  <Input
+                    type="file"
+                    p={"6"}
+                    name="image"
+                    // value={formik.values.image}
+                    onChange={(event) => {
+                      formik.setFieldValue(
+                        "file",
+                        event.currentTarget.files[0]
+                      );
+                    }}
+                  />
                 </FormControl>
                 <FormControl mb={6} isRequired>
                   <FormLabel color="white">Payment Mode Used:</FormLabel>
-                  <Select placeholder="" color="black">
+                  <Select
+                    placeholder=""
+                    color="black"
+                    name="method"
+                    value={formik.values.method}
+                    onChange={formik.handleChange}
+                  >
                     <option value={"Bitcoin"} key={"Bitcoin"}>
                       Bitcoin
                     </option>
@@ -229,7 +281,7 @@ function Payment() {
                       USDT
                     </option>
 
-                    <option value={"Ethereum"} key={"Ethereum"}>
+                    <option value={"Shiba Inu"} key={"Shiba Inu"}>
                       Shiba Inu
                     </option>
                   </Select>
@@ -238,7 +290,8 @@ function Payment() {
                   <Button
                     bg={"blue.400"}
                     color={"white"}
-                    fontWeight="normal"
+                    fontWeight="bold"
+                    isLoading={isLoading}
                     type="submit"
                     mt={6}
                     p={6}
@@ -253,12 +306,6 @@ function Payment() {
               </Stack>
             </form>
           </Box>
-
-          <CryptoCurrencyMarket
-            colorTheme="dark"
-            width="100%"
-            height={400}
-          ></CryptoCurrencyMarket>
         </SimpleGrid>
       </DashboardWrapper>
 

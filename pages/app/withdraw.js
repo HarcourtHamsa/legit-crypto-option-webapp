@@ -11,6 +11,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Select,
   Checkbox,
   Stack,
   Link,
@@ -28,6 +29,7 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
+import { IoIosCard } from "react-icons/io";
 import WithAuth from "../../HOCs/WithAuth";
 import { AuthContext } from "../../context/auth";
 import { useFormik } from "formik";
@@ -51,6 +53,8 @@ function Withdraw() {
   const formik = useFormik({
     initialValues: {
       amount: 0,
+      wallet: "",
+      method: "",
     },
 
     onSubmit: (values) => {
@@ -77,13 +81,20 @@ function Withdraw() {
           <TickerTape colorTheme="dark"></TickerTape>
           <Heading
             lineHeight={"110%"}
-            fontSize={{ base: "2xl", sm: "4xl", md: "4xl" }}
+            fontSize={{ base: "2xl", sm: "2xl", md: "2xl" }}
             mb={5}
             color="white"
+            display="flex"
+            flexDir="row"
+            gap={'2'}
           >
-            <Text>Request for Withdrawal</Text>
+            <Text>Request for Withdrawal</Text> <IoIosCard size={30}/>
           </Heading>
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
+          <SimpleGrid
+            columns={{ base: 1, md: 2 }}
+            spacing={{ base: 5, lg: 8 }}
+            fontWeight="bold"
+          >
             <Stack
               spacing={4}
               //   mt={12}
@@ -93,7 +104,7 @@ function Withdraw() {
               //   border={"1px solid"}
               borderColor={useColorModeValue("gray.800", "gray.500")}
               rounded={"lg"}
-              bg="#575962"
+              bg="-webkit-gradient(linear,left top,left bottom,from(#2b525a),to(#072427))"
               color="white"
             >
               <Stack spacing={10}>
@@ -122,6 +133,87 @@ function Withdraw() {
                   <Text>Duration:</Text>
                   <Text>Instant</Text>
                 </Flex>
+
+                <Button
+                  bg={"blue.400"}
+                  color={"white"}
+                  fontWeight="normal"
+                  mt={6}
+                  p={6}
+                  onClick={onOpen}
+                  // h={10}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                >
+                  Request Withdrawal
+                </Button>
+              </Stack>
+            </Stack>
+
+            <Stack
+              spacing={4}
+              //   mt={12}
+              px={{ base: 2, md: 4 }}
+              py={"5"}
+              shadow={"xl"}
+              //   border={"1px solid"}
+              borderColor={useColorModeValue("gray.800", "gray.500")}
+              rounded={"lg"}
+              bg="-webkit-gradient(linear,left top,left bottom,from(#2b525a),to(#072427))"
+              color="white"
+            >
+              <Stack spacing={8}>
+                <Text fontSize="lg" fontWeight="bold">
+                  Cryptocurrency
+                </Text>
+                <FormControl>
+                  <FormLabel fontWeight="bold">Wallet Address</FormLabel>
+                  <Input
+                    p={"6"}
+                    id="wallet"
+                    name="wallet"
+                    type="wallet"
+                    onChange={formik.handleChange}
+                    value={formik.values.wallet}
+                  />
+                </FormControl>
+
+                <FormControl>
+                  <FormLabel fontWeight="bold">Amount</FormLabel>
+                  <Input
+                    p={"6"}
+                    id="amount"
+                    name="amount"
+                    type="amount"
+                    onChange={formik.handleChange}
+                    value={formik.values.amount}
+                  />
+                </FormControl>
+
+                <FormControl mb={6} isRequired>
+                  <FormLabel fontWeight="bold">Select Cryptocurrency</FormLabel>
+                  <Select
+                    placeholder=""
+                    id="method"
+                    name="method"
+                    onChange={formik.handleChange}
+                    value={formik.values.method}
+                  >
+                    <option value={"Bitcoin"} key={"Bitcoin"}>
+                      Bitcoin
+                    </option>
+                    <option value={"Ethereum"} key={"Ethereum"}>
+                      Ethereum
+                    </option>
+                    <option value={"Shiba Inu"} key={"Shiba Inu"}>
+                      Shiba Inu
+                    </option>
+                    <option value={"USDT"} key={"USDT"}>
+                      USDT
+                    </option>
+                  </Select>
+                </FormControl>
 
                 <Button
                   bg={"blue.400"}

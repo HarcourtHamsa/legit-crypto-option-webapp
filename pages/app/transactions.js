@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import DashboardWrapper from "../../components/app/DashboardWrapper";
 import {
@@ -15,10 +15,25 @@ import {
   Thead,
   Tfoot,
 } from "@chakra-ui/react";
+import { IoIosClock } from "react-icons/io";
 import FloatingButton from "../../components/FloatingButton";
 import WithAuth from "../../HOCs/WithAuth";
+import helpers from "../../helpers";
 
 function Transactions() {
+  const [transactions, setTransactions] = useState([]);
+
+  // componentDidMount
+  useEffect(() => {
+    async function getTx() {
+      await helpers
+        .getTransactions()
+        .then((data) => setTransactions(data.data.data));
+    }
+
+    getTx();
+  }, []);
+
   return (
     <div>
       <DashboardWrapper>
@@ -30,37 +45,44 @@ function Transactions() {
 
         <Heading
           lineHeight={"110%"}
-          fontSize={{ base: "2xl", sm: "4xl", md: "4xl" }}
+          fontSize={{ base: "2xl", sm: "2xl", md: "2xl" }}
           mb={5}
           color="white"
+          fontWeight="bold"
+          display="flex"
+          gap={2}
+          mt={5}
         >
-          <Text>Transaction History</Text>
+          <Text>Transaction History</Text><IoIosClock size={30}/>
         </Heading>
         <Box
           h={"fit-content"}
-          px={{ base: 2, md: 4 }}
-          py={"5"}
+          // px={{ base: 2, md: 4 }}
+          // py={"5"}
           shadow={"xl"}
           //   border={"1px solid"}
           borderColor={useColorModeValue("gray.800", "gray.500")}
-          rounded={"lg"}
-          bg="white"
+          // rounded={"lg"}
         >
           <TableContainer>
-            <Table size="sm">
-              <Thead>
+            <Table variant="unstyled" color="blue.200">
+              <Thead color="white">
                 <Tr>
                   <Th>Amount</Th>
                   <Th>Status</Th>
-                  <Th isNumeric>Date</Th>
+                  <Th>Payment Method</Th>
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr>
-                  <Td></Td>
-                  <Td></Td>
-                  <Td isNumeric></Td>
-                </Tr>
+                {transactions.map((tx) => {
+                  return (
+                    <Tr key={Math.random()}>
+                      <Td>${tx?.amount}</Td>
+                      <Td>success</Td>
+                      <Td>{tx?.method}</Td>
+                    </Tr>
+                  );
+                })}
               </Tbody>
             </Table>
           </TableContainer>

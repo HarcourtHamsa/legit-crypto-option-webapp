@@ -8,8 +8,6 @@ const WithAuth = (Component) => {
       const router = useRouter();
       const token = localStorage.getItem("token");
 
-      console.log('token', token)
-
       // if there is no token, redirect to login
       if (!token) {
         router.replace("/account/login");

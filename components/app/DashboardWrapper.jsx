@@ -37,6 +37,16 @@ import {
   FiHeadphones,
   FiLogOut,
 } from "react-icons/fi";
+
+import {
+  IoIosHome,
+  IoIosAddCircle,
+  IoIosCompass,
+  IoIosCard,
+  IoIosClock,
+  IoIosHeadset,
+  IoIosLogOut
+} from "react-icons/io";
 import Link from "next/link";
 import { BiHomeSmile, BiMoney, BiCreditCard, BiHistory } from "react-icons/bi";
 import { IconType } from "react-icons";
@@ -47,18 +57,18 @@ import helpers from "../../helpers";
 import { useRouter } from "next/router";
 
 const LinkItems = [
-  { name: "Dashboard", icon: BiHomeSmile, href: "/app" },
-  { name: "Deposit", icon: BiMoney, href: "/app/deposit" },
-  { name: "Invest", icon: FiTrendingUp, href: "/app/invest" },
-  { name: "Withdraw", icon: BiCreditCard, href: "/app/withdraw" },
-  { name: "Transactions", icon: BiHistory, href: "/app/transactions" },
-  { name: "Support", icon: FiHeadphones, href: "/app/support" },
+  { name: "Dashboard", icon: IoIosHome, href: "/app" },
+  { name: "Deposit", icon: IoIosAddCircle, href: "/app/deposit" },
+  { name: "Invest", icon: IoIosCompass, href: "/app/invest" },
+  { name: "Withdraw", icon: IoIosCard, href: "/app/withdraw" },
+  { name: "Transactions", icon: IoIosClock, href: "/app/transactions" },
+  { name: "Support", icon: IoIosHeadset, href: "/app/support" },
 ];
 
 export default function DashboardWrapper({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue("#131722", "gray.900")}>
+    <Box minH="100vh" bg={useColorModeValue("rgb(18, 29, 51)", "gray.900")}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -81,7 +91,6 @@ export default function DashboardWrapper({ children }) {
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
-      •••••••
     </Box>
   );
 }
@@ -90,7 +99,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue("#131722", "gray.900")}
+      bg={useColorModeValue("rgb(18, 29, 51)", "gray.900")}
       color="white"
       borderRightWidth="thin"
       borderRightColor="gray.700"
@@ -122,8 +131,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
           color: "blue.400",
         }}
       >
-        <FiLogOut fontSize={25} />
-        <Text>Logout</Text>
+        <IoIosLogOut fontSize={25} />
+        <Text fontWeight="bold">Logout</Text>
       </Flex>
     </Box>
   );
@@ -139,6 +148,7 @@ const NavItem = ({ icon, children, link, ...rest }) => {
     >
       <Flex
         align="center"
+        fontWeight="bold"
         p="4"
         mx="4"
         role="group"
@@ -176,7 +186,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       alignItems="center"
       shadow="lg"
       // HERE
-      bg={useColorModeValue("#131722", "gray.900")}
+      bg={useColorModeValue("rgb(18, 29, 51)", "gray.900")}
       borderBottomWidth={1}
       borderBottomColor="gray.700"
       justifyContent={{ base: "space-between", md: "flex-end" }}
@@ -190,15 +200,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         icon={<FiMenu size={25} color="white" />}
       />
 
-      <SiEclipseche size={40} color="white" />
-
       <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell size={25} color="white" />}
-        />
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
@@ -214,7 +216,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm" color="white">
+                  <Text fontSize="sm" color="white" fontWeight="bold">
                     {user.firstName} {user.lastName}
                   </Text>
                   <Text fontSize="xs" color="white">
@@ -222,7 +224,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                   </Text>
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>
-                  <FiChevronDown />
+                  <FiChevronDown color="white" />
                 </Box>
               </HStack>
             </MenuButton>

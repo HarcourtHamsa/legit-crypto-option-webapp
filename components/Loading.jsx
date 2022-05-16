@@ -10,9 +10,9 @@ function Loading({ loading }) {
           w="full"
           justifyContent="center"
           alignItems="center"
-          bg="gray.800"
+          bg="rgb(18, 29, 51)"
         >
-          <Spinner color="white" fontSize={26} />
+          <Spinner color="white" fontSize={36}  />
         </Flex>
       }
     </>
