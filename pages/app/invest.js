@@ -16,7 +16,7 @@ import {
   Button,
   Heading,
   Text,
-  Container
+  Container,
 } from "@chakra-ui/react";
 import { IoIosAdd, IoIosCompass } from "react-icons/io";
 import { FaCheckCircle } from "react-icons/fa";
@@ -27,7 +27,14 @@ import FloatingButton from "../../components/FloatingButton";
 import { TickerTape } from "react-ts-tradingview-widgets";
 import WithAuth from "../../HOCs/WithAuth";
 
-const InvestmentPlanCard = ({ title, priceRange }) => {
+const InvestmentPlanCard = ({
+  title,
+  priceRange,
+  dailyProfit,
+  minimumAmount,
+  duration,
+  minimumReturn,
+}) => {
   return (
     <Stat
       px={{ base: 2, md: 4 }}
@@ -55,19 +62,19 @@ const InvestmentPlanCard = ({ title, priceRange }) => {
         <List spacing={3} textAlign="start" w="inherit">
           <ListItem>
             <ListIcon as={FaCheckCircle} color="green.500" />
-            Daily Profit: %5.00
+            Daily Profit: %{dailyProfit}
           </ListItem>
           <ListItem>
             <ListIcon as={FaCheckCircle} color="green.500" />
-            Minimum Possible Deposit: $300
+            Minimum Possible Deposit: ${minimumAmount}
           </ListItem>
           <ListItem>
             <ListIcon as={FaCheckCircle} color="green.500" />
-            Minimum Return: $510
+            Minimum Return: ${minimumReturn}
           </ListItem>
           <ListItem>
             <ListIcon as={FaCheckCircle} color="green.500" />
-            Duration: 2 Weeks
+            Duration: {duration}
           </ListItem>
         </List>
         <Box w="80%" pt={7}>
@@ -124,15 +131,27 @@ function invest() {
             >
               <InvestmentPlanCard
                 title={"Basic Plan"}
-                priceRange={"$0.00 - $10.00"}
+                priceRange={"$1,000 - $5.000"}
+                minimumAmount={"1,000"}
+                dailyProfit={"5.00"}
+                duration={"2 Weeks"}
+                minimumReturn={"2,010"}
               />
               <InvestmentPlanCard
                 title={"Silver Plan"}
-                priceRange={"$0.00 - $10.00"}
+                priceRange={"$5,000 - $10,000"}
+                minimumAmount={"5,000"}
+                dailyProfit={"7.00"}
+                duration={"1 Month"}
+                minimumReturn={"5,560"}
               />
               <InvestmentPlanCard
                 title={"Gold Plan"}
-                priceRange={"$0.00 - $10.00"}
+                priceRange={"$10,000 - $15,000"}
+                minimumAmount={"10,000"}
+                dailyProfit={"9.00"}
+                duration={"3 Months"}
+                minimumReturn={"9,200"}
               />
             </SimpleGrid>
           </Container>

@@ -53,7 +53,7 @@ export default function Pricing() {
           <Box py={4} px={12}>
             <Text fontWeight="500">Basic Plan</Text>
             <HStack justifyContent="center">
-              <Text> $300 - $999</Text>
+              <Text> $1,000 - $5,000</Text>
             </HStack>
           </Box>
           <VStack
@@ -116,7 +116,7 @@ export default function Pricing() {
             <Box py={4} px={12}>
               <Text>Silver Plan</Text>
               <HStack justifyContent="center">
-                <Text>$1,000 - $4,999</Text>
+                <Text>$5,000 - $10,000</Text>
               </HStack>
             </Box>
             <VStack
@@ -162,7 +162,7 @@ export default function Pricing() {
           <Box py={4} px={12}>
             <Text>Gold Plan</Text>
             <HStack justifyContent="center">
-              <Text>$5,000 - $9,999</Text>
+              <Text>$10,000 - $15,000</Text>
             </HStack>
           </Box>
           <VStack
