@@ -16,7 +16,7 @@ const testimonials = [
     name: "Brandon P.",
     role: "Chief Marketing Officer",
     content:
-      "Expert Hub Trade runs a quick and reliable system. It feels great to know that I Can always trust their support system to come through for me. Their response speed is prompt and the delivery precise to the last detail.",
+      "Legit Crypto Option runs a quick and reliable system. It feels great to know that I Can always trust their support system to come through for me. Their response speed is prompt and the delivery precise to the last detail.",
     avatar:
       "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
   },
@@ -40,7 +40,7 @@ const testimonials = [
     name: "Daniel T.",
     role: "Musician",
     content:
-      "I am so pleased with this product. Expert Hub Trade  is both attractive and highly adaptable. Without Expert Hub Trade , we would have gone bankrupt by now. Thank you for creating this product!",
+      "I am so pleased with this product. Legit Crypto Option  is both attractive and highly adaptable. Without Legit Crypto Option , we would have gone bankrupt by now. Thank you for creating this product!",
     avatar:
       "https://images.unsplash.com/photo-1606513542745-97629752a13b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
   },
@@ -151,7 +151,7 @@ export default function Testimonials() {
             <chakra.strong color={useColorModeValue("gray.700", "gray.50")}>
               13,000+
             </chakra.strong>{" "}
-            People use Expert Hub Trade to grow their wealth
+            People use Legit Crypto Option to grow their wealth
           </chakra.h2>
         </Box>
         <SimpleGrid

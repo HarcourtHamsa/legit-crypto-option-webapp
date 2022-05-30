@@ -44,7 +44,7 @@ export default function Hero() {
             <Text>Join The Global Leader Of Financial Investments</Text>
           </Heading>
           <Text color={"gray.500"}>
-            Expert Hub Trade is a group of financial and cryptocurrency experts
+            Legit Crypto Option is a group of financial and cryptocurrency experts
             that invest in mining and cryptocurrency trading. We carefully
             examine the volatility of bitcoin and other crypto currencies,
             invest and make good profit from our investments.
@@ -191,7 +191,7 @@ export default function Hero() {
             <Text>Join The Global Leader Of Financial Investments</Text>
           </Heading>
           <Text color={"gray.400"}>
-            Expert Hub Trade is a group of financial and cryptocurrency experts
+            Legit Crypto Option is a group of financial and cryptocurrency experts
             that invest in mining and cryptocurrency trading. We carefully
             examine the volatility of bitcoin and other crypto currencies,
             invest and make good profit from our investments.

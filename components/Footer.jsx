@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { BiMailSend } from "react-icons/bi";
+import { FiCodesandbox } from "react-icons/fi";
 
 import { SiEclipseche } from "react-icons/si";
 
@@ -62,10 +62,10 @@ export default function Footer() {
         >
           <Stack spacing={6}>
             <Box>
-              <SiEclipseche size={35} color="#4299e1" />
+              <FiCodesandbox size={35} color="#4299e1" />
             </Box>
             <Text fontSize={"sm"}>
-              © 2022 Expert Hub Trade . All rights reserved
+              © 2022 Legit Crypto Option . All rights reserved
             </Text>
             <Stack direction={"row"} spacing={6}>
               <SocialButton label={"Twitter"} href={"#"}>

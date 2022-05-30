@@ -23,7 +23,7 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 
-import { SiEclipseche } from "react-icons/si";
+import { FiCodesandbox } from "react-icons/fi";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -56,7 +56,7 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <SiEclipseche size={30} color="deepblue" />
+          <FiCodesandbox size={30} color="deepblue" />
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />

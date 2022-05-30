@@ -37,7 +37,7 @@ export default function Pricing() {
           <Text>Plans that fit your budget</Text>
         </Heading>
         <Text color={"gray.500"}>
-          Expert Hub Trade has continued to provide groundbreaking investment
+          Legit Crypto Option has continued to provide groundbreaking investment
           solutions for over a decade.
         </Text>
       </VStack>

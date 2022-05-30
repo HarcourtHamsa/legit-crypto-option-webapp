@@ -9,22 +9,20 @@ body {
   src: url('../assets/fonts/SFPRODISPLAYMEDIUM.OTF');
 }
 
-
+@font-face {
+  font-family: "Inter";
+  src: url('../assets/fonts/Inter-Regular.ttf');
+}
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
-h1,
-h2 {
-  font-family: "Uber";
-}
 
 * {
   box-sizing: border-box;
-  font-family: "Uber";
-  font-weight: bold !important;
+  font-family: "Inter";
 }
 
 #hero {
@@ -40,7 +38,7 @@ h2 {
   background-color: rgb(18, 29, 51);
 }
 
-#about{
+#about {
   background: url(../assets/images/about-hero-bg.svg) no-repeat right;
   background-size: contain;
   background-color: rgb(18, 29, 51);
